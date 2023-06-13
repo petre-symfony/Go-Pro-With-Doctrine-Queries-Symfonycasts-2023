@@ -47,7 +47,6 @@ class CategoryRepository extends ServiceEntityRepository {
 		;
 
 		$query = $qb->getQuery();
-		dd($query->getDQL());
 
 		return $query->getResult();
 	}
