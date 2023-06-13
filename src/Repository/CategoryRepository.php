@@ -39,11 +39,10 @@ class CategoryRepository extends ServiceEntityRepository {
 	 * @return Category[]
 	 */
 	public function findAllOrdered(): array {
-		$dql = 'SELECT category FROM App\Entity\Category as category ORDER BY category.name';
+		$dql = 'SELECT category FROM App\Entity\Category as category ORDER BY category.name DESC';
 
 		$query = $this->getEntityManager()->createQuery($dql);
-		dd($query->getSQL());
-		
+
 		return $query->getResult();
 	}
 //    /**
