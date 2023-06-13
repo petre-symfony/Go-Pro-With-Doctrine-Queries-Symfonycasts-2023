@@ -35,6 +35,12 @@ class CategoryRepository extends ServiceEntityRepository {
 		}
 	}
 
+	/**
+	 * @return Category[]
+	 */
+	public function findAllOrdered(): array {
+
+	}
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */
