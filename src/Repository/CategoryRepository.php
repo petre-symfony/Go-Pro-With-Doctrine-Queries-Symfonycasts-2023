@@ -56,9 +56,9 @@ class CategoryRepository extends ServiceEntityRepository {
 	 */
 	public function search(string $term): array {
 		return $this->createQueryBuilder('category')
-			->andWhere('category.name LIKE :searchTerm')
-			->orWhere('category.iconKey LIKE :searchterm')
+			->andWhere('category.name LIKE :searchTerm OR category.iconKey LIKE :searchTerm')
 			->setParameter('searchTerm', '%'.$term.'%')
+			->addOrderBy('category.name', 'DESC')
 			->getQuery()
 			->getResult()
 		;
