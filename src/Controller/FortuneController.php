@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FortuneController extends AbstractController {
 	#[Route('/', name: 'app_homepage')]
 	public function index(CategoryRepository $categoryRepository): Response {
-		$categories = $categoryRepository->findBy([], ['name' => 'DESC']);
+		$categories = $categoryRepository->findAllOrdered();
 
 		return $this->render('fortune/homepage.html.twig', [
 			'categories' => $categories
