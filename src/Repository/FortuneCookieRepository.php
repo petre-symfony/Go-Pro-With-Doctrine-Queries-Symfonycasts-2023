@@ -29,9 +29,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 			->getSingleScalarResult()
 		;
 
-		dd($result);
-
-		return $result;
+		return (int) $result;
 	}
 
 	public function save(FortuneCookie $entity, bool $flush = false): void {
