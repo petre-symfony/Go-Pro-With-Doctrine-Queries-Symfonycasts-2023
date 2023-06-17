@@ -22,6 +22,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 	}
 
 	public function countNumberPrintedForCategory(Category $category): CategoryFortuneStats {
+		/**
 		$result = $this->createQueryBuilder('fortuneCookie')
 			->select(sprintf(
 				'NEW %s(
@@ -37,7 +38,8 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 			->getQuery()
 			->getSingleResult()
 		;
-
+		*/
+		
 		return $result;
 	}
 
