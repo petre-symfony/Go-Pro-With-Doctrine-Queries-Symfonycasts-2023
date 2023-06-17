@@ -45,7 +45,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 		$stmt = $conn->prepare($sql);
 		$stmt->bindValue('category', $category->getId());
 		$result = $stmt->executeQuery();
-		dd($result->fetchAllAssociative());
+		dd($result->fetchAssociative());
 
 		return $result;
 	}
