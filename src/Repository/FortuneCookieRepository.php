@@ -25,6 +25,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 			->select('SUM(fortuneCookie.numberPrinted) AS fortunesPrinted')
 			->addSelect('AVG(fortuneCookie.numberPrinted) fortunesAverage')
 			->addSelect('category.name')
+			->innerJoin('fortuneCookie.category', 'category')
 			->andWhere('fortuneCookie.category = :category')
 			->setParameter('category', $category)
 			->getQuery()
@@ -32,7 +33,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 		;
 
 		dd($result);
-		
+
 		return (int) $result;
 	}
 
