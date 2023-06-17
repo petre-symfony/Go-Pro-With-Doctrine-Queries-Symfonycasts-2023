@@ -29,7 +29,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 			->andWhere('fortuneCookie.category = :category')
 			->setParameter('category', $category)
 			->getQuery()
-			->getSingleScalarResult()
+			->getSingleResult()
 		;
 
 		dd($result);
