@@ -31,7 +31,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 
 		dd($result);
 
-		return $result;
+		return $result['fortunesPrinted'];
 	}
 
 	public function save(FortuneCookie $entity, bool $flush = false): void {
