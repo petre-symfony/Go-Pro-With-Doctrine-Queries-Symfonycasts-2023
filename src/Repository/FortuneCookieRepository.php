@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use App\Entity\FortuneCookie;
+use App\Model\CategoryFortuneStats;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -32,6 +33,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 			->getSingleResult()
 		;
 
+		return new CategoryFortuneStats($result['']);
 		return $result;
 	}
 
