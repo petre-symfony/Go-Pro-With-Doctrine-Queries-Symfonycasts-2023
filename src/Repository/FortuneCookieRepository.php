@@ -39,6 +39,9 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 			->getSingleResult()
 		;
 		*/
+
+		$conn = $this->getEntityManager()->getConnection();
+		dd($conn);
 		
 		return $result;
 	}
