@@ -41,7 +41,7 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 		*/
 
 		$conn = $this->getEntityManager()->getConnection();
-		$sql = 'SELECT SUM(fortune_cookie.number_printed) AS fortunesPrinted, AVG(fortune_cookie.number_printed) fortunesAverage, category.name FROM fortune_cookie INNER JOIN category ON category.id = fortune_cookie.category_id WHERE fortune_cookie.category_id = :category';
+		$sql = 'SELECT SUM(fortune_cookie.number_printed) AS fortunesPrinted, AVG(fortune_cookie.number_printed) fortunesAverage, category.name AS categoryName FROM fortune_cookie INNER JOIN category ON category.id = fortune_cookie.category_id WHERE fortune_cookie.category_id = :category';
 		$stmt = $conn->prepare($sql);
 		$stmt->bindValue('category', $category->getId());
 		$result = $stmt->executeQuery();
