@@ -32,6 +32,10 @@ class FortuneController extends AbstractController {
 			throw $this->createNotFoundException('Category not found!');
 		}
 
+		foreach ($category->getFortuneCookies() as $cookie) {
+			$count += $cookie->getNumberPrinted();
+		}
+
 		return $this->render('fortune/showCategory.html.twig', [
 			'category' => $category
 		]);
