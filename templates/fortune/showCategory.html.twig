@@ -4,7 +4,7 @@
 
 
 	<h1 class="text-3xl p-5 text-center my-4 font-semibold"><span
-			class="fa {{ category.iconKey }}"></span> {{ category.name }} Fortunes</h1>
+			class="fa {{ category.iconKey }}"></span> {{ categoryName}} Fortunes</h1>
 	<div class="flex justify-center mb-16 px-4">
 		<div>
 			<table class="table-auto border mb-6">
@@ -14,7 +14,8 @@
 						Fortunes
 					</th>
 					<th class="border p-4">
-						Print History ({{ fortunesPrinted|number_format }} total)
+						Print History ({{ fortunesPrinted|number_format }} total
+						{{ fortunesAverage|number_format }} average)
 					</th>
 				</tr>
 				</thead>
