@@ -71,6 +71,15 @@ class CategoryRepository extends ServiceEntityRepository {
 		;
 	}
 
+	public function findWithFortunesJoin(int $id): ?Category {
+		return $this->createQueryBuilder('category')
+			->andWhere('category.id = :id')
+			->setParameter('id', $id)
+			->getQuery()
+			->getOneOrNullResult()
+		;
+	}
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */
