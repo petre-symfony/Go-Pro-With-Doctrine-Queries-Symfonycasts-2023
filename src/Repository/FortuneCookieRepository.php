@@ -25,8 +25,8 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 		$result = $this->createQueryBuilder('fortuneCookie')
 			->select(sprintf(
 				'NEW %s(
-					SUM(fortuneCookie.numberPrinted) AS fortunesPrinted,
-					AVG(fortuneCookie.numberPrinted) fortunesAverage,
+					SUM(fortuneCookie.numberPrinted),
+					AVG(fortuneCookie.numberPrinted),
 					category.name
 				)',
 				CategoryFortuneStats::class
