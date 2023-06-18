@@ -18,11 +18,13 @@ class FortuneController extends AbstractController {
 		CategoryRepository $categoryRepository,
 		EntityManagerInterface $entityManager
 	): Response {
+		/**
   	$entityManager->getFilters()
 			->enable('fortuneCookie_discontinued')
 			->setParameter('discontinued', false)
 		;
-
+		*/
+		
 		$searchTerm = $request->query->get('q');
 		if ($searchTerm) {
 			$categories = $categoryRepository->search($searchTerm);
