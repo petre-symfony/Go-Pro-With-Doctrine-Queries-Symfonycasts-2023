@@ -56,9 +56,10 @@ class CategoryRepository extends ServiceEntityRepository {
 	 * @return Category[]
 	 */
 	public function search(string $term): array {
+		$qb = $this->addOrderByCategoryName();
 
 		return $this
-			->addFortuneCookieJoinAndSelect()
+			->addFortuneCookieJoinAndSelect($qb)
 			->andWhere(
 				'category.name LIKE :searchTerm 
 				 OR category.iconKey LIKE :searchTerm
@@ -66,7 +67,6 @@ class CategoryRepository extends ServiceEntityRepository {
 				'
 			)
 			->setParameter('searchTerm', '%'.$term.'%')
-			->addOrderBy('category.name', 'DESC')
 			->getQuery()
 			->getResult()
 		;
@@ -84,9 +84,15 @@ class CategoryRepository extends ServiceEntityRepository {
 	}
 
 	private function addFortuneCookieJoinAndSelect(QueryBuilder $qb = null): QueryBuilder {
-		return $qb ?? $this->createQueryBuilder('category')
+		return ($qb ?? $this->createQueryBuilder('category'))
 			->addSelect('fortuneCookie')
 			->leftJoin('category.fortuneCookies', 'fortuneCookie')
+		;
+	}
+
+	private function addOrderByCategoryName(QueryBuilder $qb = null):QueryBuilder {
+		return ($qb ?? $this->createQueryBuilder('category'))
+			->addOrderBy('category.name', Criteria::DESC)
 		;
 	}
 //    /**
