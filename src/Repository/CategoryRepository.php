@@ -56,10 +56,9 @@ class CategoryRepository extends ServiceEntityRepository {
 	 * @return Category[]
 	 */
 	public function search(string $term): array {
-		$qb = $this->createQueryBuilder('category');
 
 		return $this
-			->addFortuneCookieJoinAndSelect($qn)
+			->addFortuneCookieJoinAndSelect()
 			->andWhere(
 				'category.name LIKE :searchTerm 
 				 OR category.iconKey LIKE :searchTerm
@@ -74,10 +73,9 @@ class CategoryRepository extends ServiceEntityRepository {
 	}
 
 	public function findWithFortunesJoin(int $id): ?Category {
-		$qb = $this->createQueryBuilder('category');
 
 		return $this
-			->addFortuneCookieJoinAndSelect($qb)
+			->addFortuneCookieJoinAndSelect()
 			->andWhere('category.id = :id')
 			->setParameter('id', $id)
 			->getQuery()
@@ -85,8 +83,8 @@ class CategoryRepository extends ServiceEntityRepository {
 		;
 	}
 
-	private function addFortuneCookieJoinAndSelect(QueryBuilder $qb): QueryBuilder {
-		return $qb
+	private function addFortuneCookieJoinAndSelect(QueryBuilder $qb = null): QueryBuilder {
+		return $qb ?? $this->createQueryBuilder('category')
 			->addSelect('fortuneCookie')
 			->leftJoin('category.fortuneCookies', 'fortuneCookie')
 		;
