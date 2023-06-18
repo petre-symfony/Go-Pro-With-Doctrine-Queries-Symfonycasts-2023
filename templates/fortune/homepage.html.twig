@@ -9,7 +9,7 @@
 			<a class="bg-orange-400 hover:bg-orange-500 text-white text-center rounded-full p-4"
 			   href="{{ path('app_category_show', {'id':  category.id}) }}">
 				<span class="fa {{ category.iconKey }}"></span> <span class="font-bold text-lg">{{ category.name }}</span>
-				({{ category.fortuneCookiesStillInProduction|length }})
+				({{ category.fortuneCookies|length }})
 			</a>
 		{% else %}
 			<h3>Hmm... there don't seem to be any fortunes</h3>
