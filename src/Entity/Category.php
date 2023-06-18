@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use App\Repository\FortuneCookieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
@@ -63,9 +64,7 @@ class Category {
 	 * @return Collection<int, FortuneCookie>
 	 */
 	public function getFortuneCookiesStillInProduction(): Collection {
-		$criteria = Criteria::create()
-			->andWhere(Criteria::expr()->eq('discontinued', false))
-		;
+		$criteria = FortuneCookieRepository::createFortuneCookiesStillInProductionCriteria();
 
 		return $this->fortuneCookies->matching($criteria);
 	}
