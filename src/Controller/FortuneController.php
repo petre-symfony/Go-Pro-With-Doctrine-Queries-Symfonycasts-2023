@@ -24,7 +24,7 @@ class FortuneController extends AbstractController {
 			->setParameter('discontinued', false)
 		;
 		*/
-		
+
 		$searchTerm = $request->query->get('q');
 		if ($searchTerm) {
 			$categories = $categoryRepository->search($searchTerm);
