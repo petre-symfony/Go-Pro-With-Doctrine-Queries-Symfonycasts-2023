@@ -32,7 +32,7 @@ class FortuneController extends AbstractController {
 		CategoryRepository $categoryRepository,
 		FortuneCookieRepository $fortuneCookieRepository
 	): Response {
-		$category = $categoryRepository->findWithFortunesJoin($id);
+		$category = $categoryRepository->find($id);
 		if (!$category) {
 			throw $this->createNotFoundException('Category not found!');
 		}
