@@ -47,9 +47,6 @@ class FortuneCookieRepository extends ServiceEntityRepository {
 		$stmt->bindValue('category', $category->getId());
 		$result = $stmt->executeQuery();
 
-		$this->createQueryBuilder('fortune_cookie')
-			->addCriteria(self::createFortuneCookiesStillInProductionCriteria())
-		;
 		return new CategoryFortuneStats(...$result->fetchAssociative());
 	}
 
