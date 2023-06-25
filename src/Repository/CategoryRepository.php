@@ -45,9 +45,13 @@ class CategoryRepository extends ServiceEntityRepository {
 
 		$qb = $this->createQueryBuilder('category')
 			->addOrderBy('category.name', Criteria::DESC)
+			->addSelect('COUNT(fortuneCookie.id) AS fortuneCookiesTotal')
+			->leftJoin('category.fortuneCookies', 'fortuneCookie')
+			->addGroupBy('category.id')
 		;
 
 		$query = $qb->getQuery();
+		dd($query->getResult());
 
 		return $query->getResult();
 	}
